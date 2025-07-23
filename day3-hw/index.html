@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello-with-css</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <header>
+      <a href="#Home">Home</a>
+      <a href="#About">About</a>
+      <a href="#Skills">Skills</a>
+      <a href="#Projects">Projects</a>
+      <a href="#Contact">Contact</a>
+    </header>
+
+    <div class="audio-container">
+      <audio class="glass-audio" controls autoplay loop>
+        <source src="./media/bgm.mp3" type="audio/mpeg" />
+        브라우저 bgm 재생 지원 안됨
+      </audio>
+    </div>
+
+    <div class="grid-container">
+      <!-- 왼쪽 영역 -->
+      <div class="left-section">
+        <div class="container">
+          <h2>안녕하세요!</h2>
+          <div>
+            <p>프론트엔드 개발자 박우석 입니다!</p>
+            <p>저는 이제 AI까지 다루는 풀스택 개발자로 성장할거에요!</p>
+          </div>
+        </div>
+        <div class="container">
+          <h2>📝 About Me</h2>
+          <div class="article-div">
+            <p>저의 취미는 사진찍기 입니다.</p>
+            <p>현재 사용 기종: x-half, tz-99</p>
+            <p>과거 사용 기종: e-m10ii, leica X2, FM10, a58</p>
+          </div>
+          <div>
+            <img
+              class="photo-image"
+              src="./media//fm10.jpg"
+              alt="FM10 Camera"
+            />
+            <img
+              class="photo-image"
+              src="./media//tz99.jpg"
+              alt="TZ-99 Camera"
+            />
+            <img
+              class="photo-image"
+              src="./media/half.jpg"
+              alt="X-Half Camera"
+            />
+          </div>
+        </div>
+        <div class="container">
+          <h2>📚 Skills</h2>
+          <ul>
+            <li>HTML, CSS, JavaScript</li>
+            <li>React, Vue.js</li>
+            <li>Node.js, Express</li>
+            <li>Python, Django</li>
+          </ul>
+        </div>
+        <div class="container">
+          <h2>📂 Projects</h2>
+          <div class="project">
+            <p class="project-title">Rankit</p>
+            <div class="project-details">
+              <p>기술스택: Next.js, TypeScript</p>
+              <p>설명: 개발자들의 깃허브 활동에 재미를 더하다</p>
+              <p>기간: 2024.01 ~ 2024.03</p>
+              <a href="https://www.rankit.run/" target="_blank"
+                >프로젝트 바로가기</a
+              >
+            </div>
+          </div>
+          <div class="project">
+            <p class="project-title">KAPA 장비 대여 사이트</p>
+            <div class="project-details">
+              <p>기술스택: VITE(React+Ts), supabase, vercel</p>
+              <p>설명: 장비대여 사이트 1인 개발</p>
+              <p>기간: 2024.03 ~ 2024.03</p>
+              <a href="https://kapa-rent-web.vercel.app/" target="_blank"
+                >프로젝트 바로가기</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 오른쪽 영역 -->
+      <div class="right-section">
+        <div class="container">
+          <h3>자기소개</h3>
+          <img
+            id="profile-image"
+            src="./media/profile_photo.jpg"
+            alt="Profile Image"
+          />
+          <p id="profile-comment">안녕하세요. 박우석입니다.</p>
+        </div>
+
+        <div class="container">
+          <h3>Contact</h3>
+          <a href="mailto:andro606@naver.com">📧 Email</a>
+          <a href="https://github.com/jamooooong" target="_blank">🐱 GitHub</a>
+        </div>
+
+        <div class="container">
+          <h3>방명록</h3>
+          <div class="guestbook">
+            <div class="guestbook-form">
+              <input
+                type="text"
+                id="author-name"
+                placeholder="이름을 입력하세요"
+                maxlength="20"
+              />
+              <textarea
+                id="message-content"
+                placeholder="방명록 내용을 입력하세요"
+                rows="3"
+                maxlength="200"
+              ></textarea>
+              <button onclick="addGuestbookEntry()">작성하기</button>
+            </div>
+            <div class="guestbook-list" id="guestbook-list">
+              <!-- 방명록 항목들이 여기에 표시됩니다 -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <p>© 2025 박우석. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

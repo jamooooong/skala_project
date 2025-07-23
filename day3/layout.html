@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .search-container {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        padding: 25px;
+        margin-bottom: 20px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      input {
+        flex: 1;
+        min-width: 300px;
+        padding: 15px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 25px;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        outline: none;
+        transition: all 0.3s ease;
+      }
+
+      input:focus {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        background: rgba(255, 255, 255, 1);
+      }
+
+      input::placeholder {
+        color: #999;
+      }
+
+      button {
+        padding: 15px 25px;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      #findBTN {
+        background: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%);
+        color: white;
+      }
+
+      #findBTN:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(79, 172, 254, 0.4);
+      }
+
+      .clear-btn {
+        background: linear-gradient(45deg, #ff6b6b 0%, #ff8e8e 100%);
+        color: white;
+      }
+
+      .clear-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+      }
+
+      #flex-container {
+        background: rgba(56, 163, 149, 0.9);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      #flex-container h1 {
+        color: white;
+        font-size: 2rem;
+        margin-bottom: 20px;
+        text-align: center;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      hr {
+        border: none;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.6),
+          transparent
+        );
+        margin-bottom: 20px;
+      }
+
+      .search-result-item {
+        background: rgba(255, 255, 255, 0.15) !important;
+        backdrop-filter: blur(5px);
+        padding: 20px !important;
+        margin: 15px 0 !important;
+        border-radius: 15px !important;
+        border-left: 5px solid #4facfe !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+        transition: all 0.3s ease;
+      }
+
+      .search-result-item:hover {
+        transform: translateX(10px);
+        background: rgba(255, 255, 255, 0.2) !important;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
+      }
+
+      .result-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .result-info {
+        flex: 1;
+      }
+
+      .result-term {
+        color: white !important;
+        font-weight: bold !important;
+        font-size: 1.2rem !important;
+        margin-bottom: 5px;
+      }
+
+      .result-time {
+        color: rgba(255, 255, 255, 0.8) !important;
+        font-size: 0.9rem;
+      }
+
+      .delete-btn {
+        background: linear-gradient(45deg, #ff4757 0%, #ff3838 100%) !important;
+        color: white !important;
+        border: none !important;
+        padding: 10px 15px !important;
+        border-radius: 20px !important;
+        cursor: pointer !important;
+        font-weight: bold !important;
+        transition: all 0.3s ease !important;
+        box-shadow: 0 3px 10px rgba(255, 71, 87, 0.3) !important;
+      }
+
+      .delete-btn:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4) !important;
+      }
+
+      .empty-state {
+        text-align: center;
+        padding: 40px 20px;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1.1rem;
+      }
+
+      .search-count {
+        color: white !important;
+        font-size: 1.3rem !important;
+        margin-bottom: 20px !important;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 10px 20px;
+        border-radius: 25px;
+        display: inline-block;
+        width: 100%;
+      }
+
+      @media (max-width: 768px) {
+        .search-container {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        input {
+          min-width: 100%;
+        }
+
+        button {
+          width: 100%;
+          margin: 5px 0;
+        }
+
+        .result-content {
+          flex-direction: column;
+          gap: 15px;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="search-container">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="🔍 검색할 키워드를 입력하세요..."
+      />
+      <button id="findBTN" onclick="addSearchResult()">🚀 검색</button>
+      <button class="clear-btn" onclick="clearResults()">🗑️ 초기화</button>
+    </div>
+    <div id="flex-container">
+      <h1>📊 검색 결과 데이터</h1>
+      <hr />
+      <div id="searchResults">
+        <div class="empty-state">
+          <p>🔍 검색어를 입력하고 검색 버튼을 눌러보세요!</p>
+          <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.7">
+            키워드를 입력하면 이곳에 결과가 표시됩니다
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let searchHistory = [];
+
+      // localStorage에서 검색 기록 불러오기
+      function loadSearchHistory() {
+        const saved = localStorage.getItem("searchHistory");
+        if (saved) {
+          searchHistory = JSON.parse(saved);
+          updateSearchResults();
+        }
+      }
+
+      // localStorage에 검색 기록 저장하기
+      function saveSearchHistory() {
+        localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+      }
+
+      function addSearchResult() {
+        const searchInput = document.getElementById("searchInput");
+        const resultsDiv = document.getElementById("searchResults");
+        const searchTerm = searchInput.value.trim();
+
+        if (searchTerm === "") {
+          alert("검색어를 입력해주세요!");
+          return;
+        }
+
+        // 중복 검색어 확인 (선택사항)
+        const exists = searchHistory.some(
+          (item) => item.term.toLowerCase() === searchTerm.toLowerCase()
+        );
+        if (exists) {
+          if (!confirm("이미 검색한 키워드입니다. 다시 추가하시겠습니까?")) {
+            searchInput.value = "";
+            searchInput.focus();
+            return;
+          }
+        }
+
+        // 검색 기록에 추가
+        searchHistory.push({
+          term: searchTerm,
+          timestamp: new Date().toLocaleString("ko-KR"),
+          id: Date.now(), // 고유 ID 추가
+        });
+
+        // localStorage에 저장
+        saveSearchHistory();
+
+        // 결과 표시 업데이트
+        updateSearchResults();
+
+        // 입력창 초기화
+        searchInput.value = "";
+        searchInput.focus();
+      }
+
+      function updateSearchResults() {
+        const resultsDiv = document.getElementById("searchResults");
+
+        if (searchHistory.length === 0) {
+          resultsDiv.innerHTML = `
+            <div class="empty-state">
+              <p>🔍 검색어를 입력하고 검색 버튼을 눌러보세요!</p>
+              <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.7;">키워드를 입력하면 이곳에 결과가 표시됩니다</p>
+            </div>
+          `;
+          return;
+        }
+
+        let html = `<div class="search-count">📈 총 ${searchHistory.length}개의 검색 결과</div>`;
+
+        searchHistory.forEach((item, index) => {
+          html += `
+            <div class="search-result-item">
+              <div class="result-content">
+                <div class="result-info">
+                  <div class="result-term">🔍 "${item.term}"</div>
+                  <div class="result-time">⏰ ${item.timestamp}</div>
+                </div>
+                <button onclick="removeResult(${index})" class="delete-btn">
+                  🗑️ 삭제
+                </button>
+              </div>
+            </div>
+          `;
+        });
+
+        resultsDiv.innerHTML = html;
+      }
+
+      function removeResult(index) {
+        searchHistory.splice(index, 1);
+        saveSearchHistory(); // localStorage 업데이트
+        updateSearchResults();
+      }
+
+      function clearResults() {
+        if (searchHistory.length === 0) {
+          alert("삭제할 검색 기록이 없습니다!");
+          return;
+        }
+
+        if (
+          confirm(
+            "모든 검색 기록을 삭제하시겠습니까?\n(localStorage에서도 완전히 삭제됩니다)"
+          )
+        ) {
+          searchHistory = [];
+          localStorage.removeItem("searchHistory"); // localStorage에서 완전 삭제
+          updateSearchResults();
+          console.log("모든 검색 기록이 삭제되었습니다.");
+        }
+      }
+
+      // Enter 키로 검색 실행
+      document
+        .getElementById("searchInput")
+        .addEventListener("keypress", function (e) {
+          if (e.key === "Enter") {
+            addSearchResult();
+          }
+        });
+
+      // 페이지 로드 시 입력창에 포커스 & 저장된 데이터 불러오기
+      window.addEventListener("load", function () {
+        loadSearchHistory(); // 저장된 검색 기록 불러오기
+        document.getElementById("searchInput").focus();
+
+        // localStorage 상태 로그
+        const saved = localStorage.getItem("searchHistory");
+        if (saved) {
+          console.log(
+            `저장된 검색 기록 ${JSON.parse(saved).length}개를 불러왔습니다.`
+          );
+        } else {
+          console.log("저장된 검색 기록이 없습니다.");
+        }
+      });
+
+      // 페이지 종료 시 자동 저장 (추가 안전장치)
+      window.addEventListener("beforeunload", function () {
+        saveSearchHistory();
+      });
+    </script>
+  </body>
+</html>

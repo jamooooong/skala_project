@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>심플 웹 에디터</title>
+    <link rel="stylesheet" href="WebEditorCSS.css" />
+  </head>
+  <body>
+    <div class="editor-container">
+      <div class="editor-header">
+        <div class="editor-title">심플 웹 에디터</div>
+        <div class="toolbar">
+          <button onclick="formatText('bold')">굵게</button>
+          <button onclick="formatText('italic')">기울임</button>
+          <button onclick="formatText('underline')">밑줄</button>
+          <button onclick="formatText('strikeThrough')">지움</button>
+        </div>
+        <div class="toolbar">
+          <button onclick="formatText('formatBlock', false, '<h1>')">h1</button>
+          <button onclick="formatText('formatBlock', false, '<h2>')">h2</button>
+          <button onclick="formatText('formatBlock', false, '<h3>')">h3</button>
+        </div>
+        <div class="toolbar">
+          <button onclick="changeColor()">색상</button>
+          <button onclick="changeColor()">색상</button>
+        </div>
+      </div>
+      <div
+        class="editor-content"
+        contenteditable="true"
+        id="editor"
+        onkeyup="updateHTML()"
+        onmouseup="updateHTML()"
+      >
+        여기에 <strong>문장을</strong> 입력하고 <em>다양한</em> 편집을
+        <span style="color: #dc143c">할 수</span> 있습니다.
+      </div>
+    </div>
+
+    <div class="html-output">
+      <div class="html-output-header">
+        <p>저장된 HTML 결과</p>
+        <button onclick="copyToClipboard()">복사하기</button>
+      </div>
+
+      <div class="html-output-content" id="htmlOutput">
+        여기에&nbsp;<strong>문장을</strong>&nbsp;입력하고&nbsp;<em>다양한</em>&nbsp;편집을&nbsp;<span
+          style="color: #dc143c"
+          >할 수</span
+        >&nbsp;있습니다.
+      </div>
+    </div>
+
+    <script>
+      function formatText(command, bool = false, value = null) {
+        document.execCommand(command, bool, value);
+        updateHTML();
+      }
+
+      function changeColor() {
+        const color = prompt("색상을 입력하세요 (예: red, #ff0000):");
+        if (color) {
+          document.execCommand("foreColor", false, color);
+          updateHTML();
+        }
+      }
+
+      function updateHTML() {
+        const editor = document.getElementById("editor");
+        const output = document.getElementById("htmlOutput");
+        output.textContent = editor.innerHTML;
+      }
+
+      function copyToClipboard() {
+        const output = document.getElementById("htmlOutput");
+        console.log(output.textContent);
+        navigator.clipboard
+          .writeText(output.textContent)
+          .then(() => {
+            alert("HTML이 클립보드에 복사되었습니다.");
+          })
+          .catch((err) => {
+            console.error("클립보드 복사 실패:", err);
+            alert("클립보드 복사에 실패했습니다.");
+          });
+      }
+
+      // 초기 HTML 표시
+      updateHTML();
+
+      // 붙여넣기 시 일반 텍스트로 변환
+      document.getElementById("editor").addEventListener("paste", function (e) {
+        e.preventDefault();
+        const text = (e.originalEvent || e).clipboardData.getData("text/plain");
+        document.execCommand("insertText", false, text);
+        updateHTML();
+      });
+    </script>
+  </body>
+</html>

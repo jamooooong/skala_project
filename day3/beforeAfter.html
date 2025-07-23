@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      p::before {
+        content: "<before>";
+      }
+      p::after {
+        content: "</after>";
+      }
+      p.notice {
+        color: red;
+        font-weight: bold;
+      }
+      p#header {
+        font-size: 24px;
+        font-weight: bold;
+      }
+      button {
+        background-color: lightblue;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: deepskyblue;
+      }
+      .container {
+        display: flex;
+        gap: 10px;
+        border: 2px dashed gray;
+        padding: 1rem;
+        display: inline-block;
+      }
+      .block {
+        width: 20vh;
+        height: 20vh;
+        background-color: rgb(26, 201, 105);
+        border: 1px solid blue;
+      }
+      .block-inline {
+        background-color: lightcoral;
+        border: 1px solid darkred;
+        display: inline-block;
+      }
+      .container-center {
+        /* border: 1px dashed gray; */
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+      }
+      .grid-container {
+        width: fit-content;
+        background: #9e9ec6;
+        padding: 1rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="header">This is a header paragraph.</p>
+    <p>Lorem, Ipsum dolor.</p>
+    <button>Click me</button>
+    <p class="notice">This is a notice paragraph.</p>
+    <div class="container">
+      <div class="block"><p>블록스타일 div1</p></div>
+      <div class="block"><p>블록스타일 div2</p></div>
+    </div>
+    <br />
+    <div class="container">
+      <div class="block-inline"><p>인라인 스타일 div1</p></div>
+      <div class="block-inline"><p>인라인 스타일 div2</p></div>
+    </div>
+
+    <br />
+    <div class="container-center">
+      <div class="block"><p>1</p></div>
+      <div class="block"><p>2</p></div>
+      <div class="block"><p>3</p></div>
+    </div>
+
+    <hr />
+    <div class="grid-container">
+      <div class="block">1</div>
+      <div class="block">2</div>
+      <div class="block">3</div>
+      <div class="block">4</div>
+      <div class="block">5</div>
+      <div class="block">6</div>
+    </div>
+  </body>
+</html>
