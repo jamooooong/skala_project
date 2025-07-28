@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css" />
+
+    <h1>인터넷 결제 프로그램</h1>
+    <p>최대 수량은 100개 입니다.</p>
+    <div class="rowContainer">
+      <p>가격</p>
+      <input type="text" id="priceInput" placeholder="가격을 입력하세요" />
+    </div>
+    <div class="rowContainer">
+      <p>수량</p>
+      <input
+        type="number"
+        id="quantityInput"
+        placeholder="수량을 입력하세요"
+        value="1"
+      />
+    </div>
+    <div class="rowContainer">
+      <p>멤버쉽 등급 선택</p>
+      <select id="membershipSelect">
+        <option value="VIP">VIP</option>
+        <option value="Gold">골드</option>
+        <option value="none" selected>없음</option>
+      </select>
+    </div>
+    <div class="rowContainer">
+      <p>배송 옵션</p>
+      <select id="shippingSelect">
+        <option value="fast">빠른 배송</option>
+        <option value="standard" selected>일반 배송</option>
+      </select>
+    </div>
+
+    <button onclick="handleOrderButton()">주문하기</button>
+
+    <h2>예상 결제 금액: <span id="discountAmount">0</span>원</h2>
+  </body>
+</html>

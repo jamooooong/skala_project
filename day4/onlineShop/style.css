@@ -1,0 +1,352 @@
+/* 전체 페body {
+  font-family: 'Comic Sans MS', 'Arial', cursive, sans-serif;
+  background: linear-gradient(135deg, #ffb3d9 0%, #ff99cc 25%, #ffccf2 50%, #e6f3ff 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  padding: 20px;
+  color: #5a5a5a;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* 귀여운 배경 도트 패턴 */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.4) 2px, transparent 2px),
+    radial-gradient(circle at 80% 50%, rgba(255, 192, 203, 0.4) 1px, transparent 1px),
+    radial-gradient(circle at 40% 80%, rgba(173, 216, 230, 0.4) 1px, transparent 1px);
+  background-size: 50px 50px, 30px 30px, 40px 40px;
+  z-index: -1;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f3cdff 0%, #d1a3fe 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  padding: 20px;
+  color: #333;
+}
+
+/* 메인 컨테이너 */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 제목 스타일 - 귀여운 버전 */
+h1 {
+  color: #ff6b9d;
+  font-size: 2.8rem;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 2rem;
+  text-shadow: 3px 3px 0px #ffb3d9, 6px 6px 0px #ff99cc;
+  transform: rotate(-2deg);
+  position: relative;
+}
+
+h1::before {
+  content: '🌸';
+  position: absolute;
+  left: -40px;
+  top: 50%;
+  transform: translateY(-50%) rotate(20deg);
+  font-size: 1.5rem;
+  animation: bounce 2s infinite;
+}
+
+h1::after {
+  content: '🌸';
+  position: absolute;
+  right: -40px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-20deg);
+  font-size: 1.5rem;
+  animation: bounce 2s infinite 0.5s;
+}
+
+h2 {
+  color: #ff6b9d;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 2rem;
+  text-shadow: 2px 2px 0px #ffccf2;
+  position: relative;
+}
+
+h2::before {
+  content: '💖';
+  margin-right: 10px;
+  animation: heartbeat 1.5s infinite;
+}
+
+/* 입력 컨테이너 - 귀여운 버전 */
+.rowContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(145deg, #fff0f8, #ffe0f0);
+  border: 3px solid #ffb3d9;
+  padding: 20px;
+  border-radius: 25px;
+  box-shadow: 
+    8px 8px 16px rgba(255, 179, 217, 0.3),
+    -2px -2px 8px rgba(255, 255, 255, 0.8),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+  min-width: 400px;
+  position: relative;
+}
+
+.rowContainer::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  right: 15px;
+  width: 20px;
+  height: 20px;
+  background: #ff99cc;
+  border-radius: 50%;
+  box-shadow: 
+    25px 0 #ffb3d9,
+    50px 0 #ff6b9d;
+}
+
+.rowContainer:hover {
+  background: linear-gradient(145deg, #ffe0f0, #ffccf2);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 
+    12px 12px 24px rgba(255, 179, 217, 0.4),
+    -3px -3px 12px rgba(255, 255, 255, 0.9);
+  border-color: #ff6b9d;
+}
+
+.rowContainer p {
+  color: #d63384;
+  font-weight: 700;
+  font-size: 1rem;
+  min-width: 120px;
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.8);
+}
+
+/* 입력 필드 스타일 - 귀여운 버전 */
+input, select {
+  flex: 1;
+  padding: 15px 20px;
+  border: 2px solid #ffb3d9;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #ffffff, #fff5f9);
+  font-size: 14px;
+  font-family: inherit;
+  color: #5a5a5a;
+  box-shadow: 
+    inset 2px 2px 4px rgba(255, 179, 217, 0.2),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #ff6b9d;
+  background: #ffffff;
+  box-shadow: 
+    0 0 0 4px rgba(255, 107, 157, 0.2),
+    inset 2px 2px 4px rgba(255, 179, 217, 0.3);
+  transform: scale(1.05);
+}
+
+input::placeholder {
+  color: rgba(255, 107, 157, 0.6);
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* 버튼 스타일 - 귀여운 버전 */
+button {
+  background: linear-gradient(145deg, #ff6b9d, #ff99cc);
+  color: white;
+  border: none;
+  padding: 18px 35px;
+  border-radius: 25px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin: 20px 0;
+  box-shadow: 
+    6px 6px 12px rgba(255, 107, 157, 0.4),
+    -2px -2px 8px rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+button::before {
+  content: '✨';
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  animation: sparkle 2s infinite;
+}
+
+button::after {
+  content: '✨';
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  animation: sparkle 2s infinite 0.5s;
+}
+
+button:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    8px 8px 16px rgba(255, 107, 157, 0.5),
+    -3px -3px 12px rgba(255, 255, 255, 0.9);
+  background: linear-gradient(145deg, #ff5a8a, #ff80b3);
+}
+
+button:active {
+  transform: translateY(-2px);
+  box-shadow: 
+    4px 4px 8px rgba(255, 107, 157, 0.6),
+    -1px -1px 4px rgba(255, 255, 255, 0.8);
+}
+  background: linear-gradient(45deg, #ff5252, #d63031);
+}
+
+button:active {
+  transform: translateY(-1px);
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* 결과 표시 영역 */
+#discountAmount {
+  background: linear-gradient(45deg, #82c1ff, #7078d9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-shadow: none;
+}
+
+/* 셀렉트 박스 화살표 커스텀 */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 20px;
+  padding-right: 40px;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .rowContainer {
+    flex-direction: column;
+    align-items: stretch;
+    min-width: 300px;
+    gap: 0.5rem;
+  }
+
+  .rowContainer p {
+    min-width: auto;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  body {
+    padding: 10px;
+  }
+}
+
+/* 애니메이션 효과 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rowContainer {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.rowContainer:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.rowContainer:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.rowContainer:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.rowContainer:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+/* 스크롤바 스타일링 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  backdrop-filter: blur(10px);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
