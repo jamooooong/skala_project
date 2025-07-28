@@ -1,0 +1,233 @@
+/* 기본 스타일 리셋 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  padding: 20px;
+  color: #2c3e50;
+  line-height: 1.6;
+}
+
+/* 메인 컨테이너 */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 40px;
+}
+
+/* 제목 스타일 */
+h1 {
+  color: #2c3e50;
+  font-size: 2.5rem;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+  letter-spacing: 2px;
+}
+
+h1::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(45deg, #3498db, #2980b9);
+  border-radius: 2px;
+}
+
+/* 폼 컨테이너 */
+#addForm {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  border: 1px solid #e8eef5;
+}
+
+#addForm p {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #34495e;
+  margin-bottom: 30px;
+  text-align: center;
+  border-bottom: 2px solid #ecf0f1;
+  padding-bottom: 15px;
+}
+
+/* 입력 필드 스타일 */
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  border: 2px solid #ecf0f1;
+  border-radius: 8px;
+  font-size: 16px;
+  background: #fafbfc;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  outline: none;
+  border-color: #3498db;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+  transform: translateY(-1px);
+}
+
+input::placeholder {
+  color: #95a5a6;
+  font-style: italic;
+}
+
+/* 버튼 스타일 */
+button {
+  width: 100%;
+  padding: 15px 20px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 책 등록 버튼 */
+#addBookButton {
+  background: linear-gradient(45deg, #27ae60, #2ecc71);
+  color: white;
+  box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+}
+
+#addBookButton:hover {
+  background: linear-gradient(45deg, #229954, #27ae60);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
+}
+
+/* 책 목록 가져오기 버튼 */
+button:not(#addBookButton) {
+  background: linear-gradient(45deg, #3498db, #2980b9);
+  color: white;
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+button:not(#addBookButton):hover {
+  background: linear-gradient(45deg, #2980b9, #21618c);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+}
+
+/* 버튼 클릭 효과 */
+button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 버튼 리플 효과 */
+button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* 책 모양 장식 요소 */
+body::before {
+  content: "";
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 50px;
+  background: linear-gradient(45deg, #e74c3c, #c0392b);
+  border-radius: 0 3px 3px 0;
+  box-shadow: -10px 0 0 #3498db, -20px 0 0 #2ecc71;
+  opacity: 0.7;
+  z-index: -1;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 40px;
+  height: 50px;
+  background: linear-gradient(45deg, #9b59b6, #8e44ad);
+  border-radius: 3px 0 0 3px;
+  box-shadow: 10px 0 0 #f39c12, 20px 0 0 #e67e22;
+  opacity: 0.7;
+  z-index: -1;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+    padding-top: 20px;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+
+  #addForm {
+    padding: 30px 20px;
+    margin: 0 10px;
+  }
+
+  #addForm p {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+  }
+
+  input[type="text"],
+  input[type="number"] {
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+
+  button {
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+
+  body::before,
+  body::after {
+    display: none;
+  }
+}

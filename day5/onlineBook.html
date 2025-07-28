@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>온라인 서점 | Book Store</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="onlineBookScript.js"></script>
+  </head>
+  <body>
+    <h1>온라인 서점</h1>
+    <form id="addForm">
+      <p>책 등록하기</p>
+      <input type="text" id="title" placeholder="책 제목" />
+      <input type="text" id="author" placeholder="저자" />
+      <input type="number" id="price" placeholder="가격" />
+      <input type="number" id="stock" placeholder="재고 수량" />
+      <input type="text" id="category" placeholder="카테고리" />
+      <button id="addBookButton" type="button" onclick="addBook()">
+        책 등록
+      </button>
+      <button type="button" onclick="getBooks()">책 목록 가져오기</button>
+    </form>
+  </body>
+</html>
